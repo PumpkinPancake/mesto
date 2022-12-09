@@ -1,0 +1,22 @@
+.input__popup-about {
+    margin-bottom: 48px;
+    border-style: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    font-family: inherit;
+    box-sizing: border-box;
+    padding-bottom: 13px;
+    font-size: 14px;
+    line-height: 16.94px;
+    font-weight: 400;
+}
+
+.input__popup-about:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+}
+
+@media screen and (max-width: 768px) {
+    ..input__popup-about {
+        margin-bottom: 45px;
+    }
+}
