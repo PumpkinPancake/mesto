@@ -7,7 +7,6 @@
     align-self: center;
     padding-right: 18px;
     text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
 } 
 
