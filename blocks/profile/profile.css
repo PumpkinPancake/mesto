@@ -1,6 +1,6 @@
 .profile {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 150px repeat(3, 1fr);
     padding-bottom: 50px;
     box-sizing: border-box;
 }
