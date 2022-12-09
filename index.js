@@ -12,8 +12,8 @@ addButton.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
 
 function openPopup() {
-    let enterName = document.querySelector('.input__popup-name');
-    let enterAbout = document.querySelector('.input__popup-about');
+    let enterName = document.querySelector('.popup__input-name');
+    let enterAbout = document.querySelector('.popup__input-about');
 
     enterName.value = title.textContent;
     enterAbout.value = about.textContent;
@@ -29,8 +29,8 @@ function closePopup() {
 
 
 function addName() {
-    let enterName = document.querySelector('.input__popup-name');
-    let enterAbout = document.querySelector('.input__popup-about');
+    let enterName = document.querySelector('.popup__input-name');
+    let enterAbout = document.querySelector('.popup__input-about');
 
     title.innerHTML = `<h1 class="profile__title">${enterName.value}</h1>`;
     about.innerHTML = `<h2 class="profile__subtitle">${enterAbout.value}</h2>`;
