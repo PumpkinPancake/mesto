@@ -8,11 +8,14 @@
     padding-right: 18px;
     text-overflow: ellipsis;
     overflow: hidden;
+    max-width: 300px;
+    text-align: center;
 } 
 
 @media screen and (max-width: 425px) {
     .profile__title {
         font-size: 27px;
         line-height: 32.68px;
+        padding-right: 10px;
     }    
 }

@@ -11,7 +11,7 @@
     align-self: center;
     justify-self: end;
     display: grid;
-    padding: 25px 25px 30px;
+    padding-right: 57px;
     grid-column: 3;
 }
 
