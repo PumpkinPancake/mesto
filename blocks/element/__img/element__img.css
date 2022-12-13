@@ -6,4 +6,5 @@
   border-top-right-radius: 10px;
   grid-column: span 3;
   grid-row: 1/3;
+  box-sizing: border-box;
 }

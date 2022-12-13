@@ -5,5 +5,5 @@
   min-width: 282px;
   min-height: 361px;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, min-content);
+  grid-template-rows: repeat(2, 1fr) min-content;
 }

@@ -15,16 +15,18 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <form action="#" class="popup__form" name="popup__form">
           <input
+            name="input__name"
             type="text"
-            class="popup__input popup__input_text-name"
+            class="popup__input popup__input_text_type_username"
             placeholder="Имя"
           />
           <input
+            name="iput__about"
             type="text"
-            class="popup__input popup__input_text-about"
+            class="popup__input popup__input_text_type_about"
             placeholder="О себе"
           />
-          <input type="submit" class="popup__submit" value="Сохранить" />
+          <button type="submit" class="popup__submit">Сохранить</button>
         </form>
       </div>
     </div>
@@ -32,102 +34,81 @@
     <header class="header">
       <img src="./images/logo.svg" alt="Логотип" class="header__logo" />
     </header>
-
-    <div class="container">
-      <main class="main">
-        <section class="profile">
+    <main class="main">
+      <section class="profile">
+        <img
+          src="./images/image.jpg"
+          alt="Жак-Ив-Кусто на фоне море в красной шапке"
+          class="profile__avatar"
+        />
+        <div class="profile__info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit-button"></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button type="button" class="profile__add-button"></button>
+      </section>
+      <section class="elements">
+        <article class="element">
           <img
-            src="./images/image.jpg"
-            alt="Жак-Ив-Кусто на фоне море в красной шапке"
-            class="profile__avatar"
+            src="./images/karachaevsk.jpg"
+            alt="старая церковь на фоне гор"
+            class="element__img"
           />
-          <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__edit-button"></button>
-            <p class="profile__subtitle">Исследователь океана</p>
-          </div>
-          <button type="button" class="profile__add-button"></button>
-        </section>
-        <section class="elements">
-          <article class="element">
-            <img
-              src="./images/karachaevsk.jpg"
-              alt="старая церковь на фоне гор"
-              class="element__img"
-            />
-            <h2 class="element__title">Карачаевск</h2>
-            <button
-              type="button"
-              class="element__button-like"
-            ></button>
-          </article>
-          <article class="element">
-            <img
-              src="./images/Elbrus.png"
-              alt="Гора на фоне заката"
-              class="element__img"
-            />
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button
-              type="button"
-              class="element__button-like"
-            ></button>
-          </article>
-          <article class="element">
-            <img
-              src="./images/Dombay.png"
-              alt="лес и горы"
-              class="element__img"
-            />
-            <h2 class="element__title">Домбай</h2>
-            <button
-              type="button"
-              class="element__button-like"
-            ></button>
-          </article>
-          <article class="element">
-            <img
-              src="./images/Elbrus.png"
-              alt="Гора на фоне заката"
-              class="element__img"
-            />
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button
-              type="button"
-              class="element__button-like"
-            ></button>
-          </article>
-          <article class="element">
-            <img
-              src="./images/Dombay.png"
-              alt="лес и горы"
-              class="element__img"
-            />
-            <h2 class="element__title">Домбай</h2>
-            <button
-              type="button"
-              class="element__button-like"
-            ></button>
-          </article>
-          <article class="element">
-            <img
-              src="./images/karachaevsk.jpg"
-              alt="старая церковь на фоне гор"
-              class="element__img"
-            />
-            <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button
-              type="button"
-              class="element__button-like"
-            ></button>
-          </article>
-        </section>
-      </main>
+          <h2 class="element__title">Карачаевск</h2>
+          <button type="button" class="element__button-like"></button>
+        </article>
+        <article class="element">
+          <img
+            src="./images/Elbrus.png"
+            alt="Гора на фоне заката"
+            class="element__img"
+          />
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button type="button" class="element__button-like"></button>
+        </article>
+        <article class="element">
+          <img
+            src="./images/Dombay.png"
+            alt="лес и горы"
+            class="element__img"
+          />
+          <h2 class="element__title">Домбай</h2>
+          <button type="button" class="element__button-like"></button>
+        </article>
+        <article class="element">
+          <img
+            src="./images/Elbrus.png"
+            alt="Гора на фоне заката"
+            class="element__img"
+          />
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button type="button" class="element__button-like"></button>
+        </article>
+        <article class="element">
+          <img
+            src="./images/Dombay.png"
+            alt="лес и горы"
+            class="element__img"
+          />
+          <h2 class="element__title">Домбай</h2>
+          <button type="button" class="element__button-like"></button>
+        </article>
+        <article class="element">
+          <img
+            src="./images/karachaevsk.jpg"
+            alt="старая церковь на фоне гор"
+            class="element__img"
+          />
+          <h2 class="element__title">Карачаево-Черкессия</h2>
+          <button type="button" class="element__button-like"></button>
+        </article>
+      </section>
+    </main>
 
-      <footer class="footer">
-        <p class="footer__copyright">&copy;2020 Mesto Russia</p>
-      </footer>
-    </div>
+    <footer class="footer">
+      <p class="footer__copyright">&copy;2020 Mesto Russia</p>
+    </footer>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

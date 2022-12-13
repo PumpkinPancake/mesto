@@ -11,10 +11,16 @@
   align-self: center;
   justify-self: end;
   display: grid;
-  padding-right: 57px;
+  margin-right: 30px;
   grid-column: 3;
 }
 
 .element__button-like:hover {
   opacity: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .element__button-like {
+    margin-right: 20px;
+  }
 }

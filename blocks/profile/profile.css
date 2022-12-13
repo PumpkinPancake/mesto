@@ -3,6 +3,9 @@
   grid-template-columns: 150px repeat(3, 1fr);
   padding-bottom: 50px;
   box-sizing: border-box;
+  max-width: 880px;
+  width: calc(100% - 2*19px);
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {

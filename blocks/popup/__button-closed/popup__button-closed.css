@@ -5,8 +5,8 @@
   background-repeat: no-repeat;
   position: absolute;
   padding: 0;
-  top: -30px;
-  right: -30px;
+  top: -37px;
+  right: -41px;
   width: 32px;
   height: 32px;
   border: none;
@@ -22,7 +22,7 @@
   .popup__button-closed {
     width: 20px;
     height: 20px;
-    top: -30px;
+    top: -37px;
     right: 0;
   }
 }

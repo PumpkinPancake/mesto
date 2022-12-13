@@ -3,7 +3,7 @@
   background-color: black;
   appearance: none;
   width: 100%;
-  height: 50px;
+  padding: 14px 0 18px;
   font-size: 18px;
   line-height: 21.78px;
   text-align: center;
@@ -18,7 +18,8 @@
 
 @media screen and (max-width: 768px) {
   .popup__submit {
-    width: 238px;
-    height: 46px;
+    padding: 14px 0;
+    font-size: 14px;
+    line-height: 16.94px;
   }
 }

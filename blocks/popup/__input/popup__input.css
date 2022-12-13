@@ -1,12 +1,12 @@
 .popup__input {
-  margin-bottom: 48px;
+  margin-bottom: 35px;
   border-style: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-family: inherit;
-  box-sizing: border-box;
   font-size: 14px;
   line-height: 16.94px;
   font-weight: 400;
+  padding-bottom: 7px;
 }
 
 .popup__input:focus {
@@ -14,8 +14,12 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.popup__input:last-of-type { 
+  margin-bottom: 47px;
+}
+
 @media screen and (max-width: 768px) {
   .popup__input {
-    margin-bottom: 45px;
+    margin-bottom: 30px;
   }
 }
