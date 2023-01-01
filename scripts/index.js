@@ -108,7 +108,7 @@ function openBigImg(img, title) {
   popupImg.alt = title;
 }
 
-function cliseBigImg() {
+function closeBigImg() {
   popupBigImg.classList.remove("popup_opened");
 }
 
@@ -138,7 +138,7 @@ function addNewCard(name, link) {
 }
 
 initialCards.forEach((item) => {
-  elementContainer.prepend(addNewCard(item.name, item.link));
+  elementContainer.append(addNewCard(item.name, item.link));
 });
 
 popupAddSubmit.addEventListener("click", function () {
@@ -157,7 +157,7 @@ popupAddSubmit.addEventListener("click", function () {
   popupInputLink.value = "";
 });
 
-popupBtnCloseBigImg.addEventListener("click", cliseBigImg);
+popupBtnCloseBigImg.addEventListener("click", closeBigImg);
 btnPopupAdd.addEventListener("click", openPopupAdd);
 popupAddClose.addEventListener("click", closePopupAdd);
 formAddEl.addEventListener("submit", handleFormAddSubmit);
