@@ -41,9 +41,9 @@ formElement.addEventListener("submit", handleFormSubmit);
 // консты попапа добавления картинок
 
 const popupAdd = document.querySelector(".popup-add");
-const popupAddClose = document.querySelector(".popup-add__btn-closed");
+const popupAddClose = document.querySelector(".popup-add_btn-closed");
 const btnPopupAdd = document.querySelector(".profile__add-button");
-const formAddEl = document.querySelector(".popup-add__form");
+const formAddEl = document.querySelector(".popup-add_form");
 const popupAddSubmit = document.querySelector(".popup-add__submit");
 
 // консты элементов
@@ -143,10 +143,10 @@ initialCards.forEach((item) => {
 
 popupAddSubmit.addEventListener("click", function () {
   const popupInputImgName = document.querySelector(
-    ".popup-add__input_text_type-title"
+    ".popup-add_input_text_type-title"
   );
   const popupInputLink = document.querySelector(
-    ".popup-add__input_text_type-link"
+    ".popup-add_input_text_type-link"
   );
   if (popupInputLink.value !== "") {
     elementContainer.prepend(
