@@ -1,11 +1,11 @@
-let popup = document.querySelector(".popup");
-let popupClose = document.querySelector(".popup__button-closed");
-let editButton = document.querySelector(".profile__edit-button");
-let title = document.querySelector(".profile__title");
-let about = document.querySelector(".profile__subtitle");
-let enterName = document.querySelector(".popup__input_text_type-username");
-let enterAbout = document.querySelector(".popup__input_text_type-about");
-let formElement = document.querySelector(".popup__form");
+const popup = document.querySelector(".popup");
+const popupClose = document.querySelector(".popup__button-closed");
+const editButton = document.querySelector(".profile__edit-button");
+const title = document.querySelector(".profile__title");
+const about = document.querySelector(".profile__subtitle");
+const enterName = document.querySelector(".popup__input_text_type-username");
+const enterAbout = document.querySelector(".popup__input_text_type-about");
+const formElement = document.querySelector(".popup__form");
 
 // Открытие попапа
 
@@ -130,10 +130,9 @@ function addNewCard(name, link) {
     openBigImg(link, name);
   });
 
-  newCard.querySelector('.element__del-btn').addEventListener('click', () => {
+  newCard.querySelector(".element__del-btn").addEventListener("click", () => {
     newCard.remove();
   });
-
 
   return newCard;
 }
