@@ -143,10 +143,10 @@ initialCards.forEach((item) => {
 
 popupAddSubmit.addEventListener("click", function () {
   const popupInputImgName = document.querySelector(
-    ".popup-add_input_text_type-title"
+    ".popup__input_text_type-title"
   );
   const popupInputLink = document.querySelector(
-    ".popup-add_input_text_type-link"
+    ".popup__input_text_type-link"
   );
   if (popupInputLink.value !== "") {
     elementContainer.prepend(
