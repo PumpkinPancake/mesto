@@ -55,10 +55,10 @@ const delBtnCard = elementTemplate.querySelector(".element__del-btn");
 // консты больших картинок
 
 const popupImg = document.querySelector(".popup__img");
-const popupBigImg = document.querySelector(".popup__open_big-img");
+const popupBigImg = document.querySelector(".popup_open_big-img");
 const popupImgTitle = document.querySelector(".popup__title-img");
 const popupBtnCloseBigImg = document.querySelector(
-  ".popup__button-closed_big-img"
+  ".popup_button-closed_big-img"
 );
 
 const initialCards = [
