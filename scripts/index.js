@@ -37,7 +37,7 @@ const popupBtnCloseBigImg = document.querySelector(
   ".popup__button-closed_big-img"
 );
 
-const popupBtnOpen = document.querySelectorAll('.open_popup');
+const popupBtnOpen = document.querySelectorAll('.profile__open_popup');
 
 nameEnter.value = title.textContent;
 aboutEnter.value = about.textContent;
