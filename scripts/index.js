@@ -37,31 +37,22 @@ const popupBtnCloseBigImg = document.querySelector(
   ".popup__button-closed_big-img"
 );
 
+const popupBtnOpen = document.querySelectorAll('.open_popup');
+
 nameEnter.value = title.textContent;
 aboutEnter.value = about.textContent;
 
-// // Открытие попапа
+// открытие и закрытие попапа
 
-buttonEditProfile.addEventListener("click", () => {
-  popupEdit.classList.add("popup_opened");
+popupBtnOpen.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    popupEdit.classList.add('popup_opened');
+  });
 });
 
-// Закрытие попапа
-
-popupClose.addEventListener("click", () => {
-  popupEdit.classList.remove("popup_opened");
-});
-
-// функция открытия попапа добавления карточек
-
-btnPopupAdd.addEventListener("click", () => {
-  popupAdd.classList.add("popup_opened");
-});
-
-// функция закрытия попапа для добавления карточек
-
-popupAddClose.addEventListener("click", () => {
-  popupAdd.classList.remove('popup_opened');
+popupClose.addEventListener('click',() => {
+  popupEdit.classList.remove('popup_opened');
 });
 
 // функция добавления новой карточки
