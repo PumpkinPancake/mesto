@@ -1,6 +1,6 @@
 // консты для попапа редактирования имени пррофиля
 
-const popupEdit = document.querySelector(".popup");
+const popups = document.querySelector(".popup");
 const popupClose = document.querySelector(".popup__button-closed");
 const buttonEditProfile = document.querySelector(".profile__edit-button");
 const nameEnter = document.querySelector(".popup__input_text_type-username");
@@ -47,12 +47,12 @@ aboutEnter.value = about.textContent;
 popupBtnOpen.forEach((button) => {
   button.addEventListener('click', (e) => {
     e.preventDefault();
-    popupEdit.classList.add('popup_opened');
+    popups.classList.add('popup_opened');
   });
 });
 
 popupClose.addEventListener('click',() => {
-  popupEdit.classList.remove('popup_opened');
+  popups.classList.remove('popup_opened');
 });
 
 // функция добавления новой карточки
@@ -91,7 +91,7 @@ function handleFormEditSubmit(evt) {
 
   title.textContent = nameEnter.value;
   about.textContent = aboutEnter.value;
-  popupEdit.classList.remove("popup_opened");
+  popups.classList.remove("popup_opened");
 }
 
 // функция смены класса для лайка
