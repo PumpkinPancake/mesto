@@ -2,8 +2,6 @@
   background-color: white;
   border-radius: 10px;
   display: grid;
-  min-width: 282px;
-  min-height: 361px;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, 1fr) min-content;
   position: relative;

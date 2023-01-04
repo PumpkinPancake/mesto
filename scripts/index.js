@@ -1,11 +1,11 @@
 // консты для попапа редактирования имени пррофиля
 
-const popupEdit = document.querySelector(".popup");
+const popupEdit = document.querySelector(".popup-edit");
 const popupClose = document.querySelector(".popup__button-closed");
 const buttonEditProfile = document.querySelector(".profile__edit-button");
 const nameEnter = document.querySelector(".popup__input_text_type-username");
 const aboutEnter = document.querySelector(".popup__input_text_type-about");
-const popupEditForm = document.querySelector(".popup__form");
+const popupEditForm = document.querySelector(".popup-edit__form");
 
 // консты для профиля
 
@@ -18,7 +18,6 @@ const popupAdd = document.querySelector(".popup-add");
 const popupAddClose = document.querySelector(".popup-add__btn-closed");
 const btnPopupAdd = document.querySelector(".profile__add-button");
 const formAddEl = document.querySelector(".popup-add__form");
-const popupAddSubmit = document.querySelector(".popup-add__submit");
 const popupInputImgName = document.querySelector(
   ".popup__input_text_type-title"
 );
@@ -28,7 +27,7 @@ const popupInputLink = document.querySelector(".popup__input_text_type-link");
 
 const cardsContainer = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#element-template").content;
-const newCard = cardTemplate.querySelector(".element");
+const cardNew = cardTemplate.querySelector(".element");
 
 // консты больших картинок
 
@@ -38,9 +37,6 @@ const popupImgTitle = document.querySelector(".popup__title-img");
 const popupBtnCloseBigImg = document.querySelector(
   ".popup__button-closed_big-img"
 );
-
-nameEnter.value = title.textContent;
-aboutEnter.value = about.textContent;
 
 // Открытие попапов
 
@@ -60,31 +56,15 @@ function handleFormAddSubmit(evt) {
   evt.preventDefault();
 
   if (popupInputLink.value !== "") {
-    let nameLink = {
+    const cardData = {
       name: popupInputImgName.value,
       link: popupInputLink.value,
     };
-    cardsContainer.prepend(createCard(nameLink));
+    cardsContainer.prepend(createCard(cardData));
   }
   evt.target.reset();
   closePopup(popupAdd);
 }
-
-buttonEditProfile.addEventListener("click", () => {
-  openPopup(popupEdit);
-});
-
-popupClose.addEventListener("click", () => {
-  closePopup(popupEdit);
-});
-
-btnPopupAdd.addEventListener("click", () => {
-  openPopup(popupAdd);
-});
-
-popupAddClose.addEventListener("click", () => {
-  closePopup(popupAdd);
-});
 
 // функция открытия больших картинок
 
@@ -94,12 +74,6 @@ function openBigImg(img, title) {
   popupImgTitle.textContent = title;
   popupImg.alt = title;
 }
-
-// функция закрытия больших картинок
-
-popupBtnCloseBigImg.addEventListener("click", () => {
-  closePopup(popupBigImg);
-});
 
 // Смена имени профиля
 
@@ -114,7 +88,7 @@ function handleFormEditSubmit(evt) {
 // функция создания новой карточки
 
 function createCard(cardData) {
-  const cardElement = newCard.cloneNode(true);
+  const cardElement = cardNew.cloneNode(true);
   const cardImg = cardElement.querySelector(".element__img");
   const cardTitle = cardElement.querySelector(".element__title");
 
@@ -157,3 +131,27 @@ initialCards.forEach((item) => {
 
 popupEditForm.addEventListener("submit", handleFormEditSubmit);
 formAddEl.addEventListener("submit", handleFormAddSubmit);
+
+buttonEditProfile.addEventListener("click", () => {
+  nameEnter.value = title.textContent;
+  aboutEnter.value = about.textContent;
+  openPopup(popupEdit);
+});
+
+popupClose.addEventListener("click", () => {
+  closePopup(popupEdit);
+});
+
+btnPopupAdd.addEventListener("click", () => {
+  openPopup(popupAdd);
+});
+
+popupAddClose.addEventListener("click", () => {
+  closePopup(popupAdd);
+});
+
+// функция закрытия больших картинок
+
+popupBtnCloseBigImg.addEventListener("click", () => {
+  closePopup(popupBigImg);
+});
