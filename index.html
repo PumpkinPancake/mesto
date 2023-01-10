@@ -5,51 +5,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
-    <script defer src="./scripts/cards.js"></script>
-    <script defer src="./scripts/index.js"></script>
+    <link rel="stylesheet" href="./pages/index.css" /> 
   </head>
 
   <body class="page">
     <div class="popup popup-edit">
-      <div class="popup__container">
+      <div class="popup__container popup-edit__container">
         <button type="button" class="popup__button-closed"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form action="#" class="popup__form popup-edit__form" name="popup__form">
+        <form action="#" class="popup__form popup-edit__form" name="popup__form" novalidate>
+          <label class="popup__label">
           <input
             name="input__name"
             type="text"
             class="popup__input popup__input_text_type-username"
             placeholder="Имя"
+            minlength="2"
+            maxlength="40"
+            required
+            id="name-input"
           />
+          <span class="popup__input-error name-input-error"></span>
+        </label>
+        <label class="popup__label">
           <input
-            name="iput__about"
+            name="input__about"
             type="text"
             class="popup__input popup__input_text_type-about"
             placeholder="О себе"
+            minlength="2"
+            maxlength="200"
+            required
+            id="about-input"
           />
+          <span class="popup__input-error about-input-error"></span>
+        </label>
           <button type="submit" class="popup__submit">Сохранить</button>
         </form>
       </div>
     </div>
 
     <div class="popup popup-add">
-      <div class="popup__container">
+      <div class="popup__container popup-add__container">
         <button type="button" class="popup__button-closed popup-add__btn-closed"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form action="#" class="popup__form popup-add__form" name="popup-add__form">
+        <form action="#" class="popup__form popup-add__form" name="popup-add__form" novalidate>
+          <label class="popup__label">
           <input
             name="input__title"
             type="text"
             class="popup__input popup__input_text_type-title"
             placeholder="Название"
+            minlength="2"
+            maxlength="30"
+            required
+            id="title-input"
           />
+          <span class="popup__input-error title-input-error"></span>
+        </label>
+          <label class="popup__label">
           <input
             name="input__link"
-            type="text"
+            type="url"
             class="popup__input popup__input_text_type-link"
             placeholder="Ссылка на картинку"
+            required
+            id="link-input"
           />
+          <span class="popup__input-error link-input-error"></span>
+        </label>
           <button type="submit" class="popup__submit popup-add__submit">Создать</button>
         </form>
       </div>
@@ -100,5 +124,8 @@
         <button class="element__del-btn"></button>
       </article>
     </template>
+    <script src="./scripts/cards.js"></script>
+    <script src="./scripts/validation.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

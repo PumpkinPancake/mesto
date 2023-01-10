@@ -1,4 +1,4 @@
-// консты для попапа редактирования имени пррофиля
+ // консты для попапа редактирования имени пррофиля
 
 const popupEdit = document.querySelector(".popup-edit");
 const popupClose = document.querySelector(".popup__button-closed");
@@ -37,6 +37,15 @@ const popupImgTitle = document.querySelector(".popup__title-img");
 const popupBtnCloseBigImg = document.querySelector(
   ".popup__button-closed_big-img"
 );
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input-error',
+  errorClass: 'popup__input-error_visible',
+};
 
 // Открытие попапов
 
@@ -133,9 +142,10 @@ popupEditForm.addEventListener("submit", handleFormEditSubmit);
 formAddEl.addEventListener("submit", handleFormAddSubmit);
 
 buttonEditProfile.addEventListener("click", () => {
+  openPopup(popupEdit);
   nameEnter.value = title.textContent;
   aboutEnter.value = about.textContent;
-  openPopup(popupEdit);
+  enableValidation(validationConfig);
 });
 
 popupClose.addEventListener("click", () => {
@@ -143,6 +153,7 @@ popupClose.addEventListener("click", () => {
 });
 
 btnPopupAdd.addEventListener("click", () => {
+  enableValidation(validationConfig);
   openPopup(popupAdd);
 });
 
@@ -155,3 +166,42 @@ popupAddClose.addEventListener("click", () => {
 popupBtnCloseBigImg.addEventListener("click", () => {
   closePopup(popupBigImg);
 });
+
+// Закрытие попапов кликом на Escape
+
+document.addEventListener('keydown', function(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(popupAdd);
+    closePopup(popupEdit);
+    closePopup(popupBigImg);
+  };
+})
+
+// Закрытия попапов по клику на оверлей
+
+popupEdit.addEventListener('click', function(evt) {
+    closePopup(popupEdit);
+})
+
+document.querySelector('.popup-edit__container').addEventListener('click', function(evt) {
+  evt.stopPropagation();
+})
+
+popupAdd.addEventListener('click', function(evt) {
+    closePopup(popupAdd);
+})
+
+document.querySelector('.popup-add__container').addEventListener('click', function(evt) {
+  evt.stopPropagation();
+})
+
+popupBigImg.addEventListener('click', function(evt) {
+    closePopup(popupBigImg);
+})
+
+document.querySelector('.popup__big-img').addEventListener('click', function(evt) {
+evt.stopPropagation();
+})
+
+
+enableValidation(validationConfig);
