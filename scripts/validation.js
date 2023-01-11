@@ -34,19 +34,23 @@ function hasInvalidInput(inputList) {
 
 // функция переключения кнопки сабмит disabled/enabled
 
-function disabledButtonState(inputList, buttonElement, config) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.disabled = true;
-  };
-}
+const disableButton = (buttonElement, config) => {
+  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.disabled = true;
+};
 
-function enabledButtonState(inputList, buttonElement, config) {
-  if (!hasInvalidInput(inputList)) {
-    buttonElement.classList.remove(config.inactiveButtonClass);
-    buttonElement.disabled = false;
-  };
-}
+const enableButton = (buttonElement, config) => {
+  buttonElement.classList.remove(config.inactiveButtonClass);
+  buttonElement.disabled = false;
+};
+
+const toggleButtonState = (inputList, buttonElement, config) => {
+  if (hasInvalidInput(inputList)) {
+    disableButton(buttonElement, config);
+  } else {
+    enableButton(buttonElement, config);
+  }
+};
 
 // функция создания массивов из инпутов
 
@@ -55,19 +59,27 @@ function setEventListeners(formElement, config) {
     formElement.querySelectorAll(config.inputSelector)
   );
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
-  console.log(inputList);
 
-  disabledButtonState(inputList, buttonElement, config);
-  enabledButtonState(inputList, buttonElement, config);
+  toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement, config);
-      disabledButtonState(inputList, buttonElement, config);
-      enabledButtonState(inputList, buttonElement, config);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 }
+
+const resetValidation = (formElement, config) => {
+  const inputList = Array.from(
+    formElement.querySelectorAll(config.inputSelector)
+  );
+  const submitButton = formElement.querySelector(config.submitButtonSelector);
+  toggleButtonState(inputList, submitButton, config);
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, config);
+  });
+};
 
 // финальная сборка))
 

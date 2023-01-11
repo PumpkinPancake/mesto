@@ -6,7 +6,7 @@ const buttonEditProfile = document.querySelector(".profile__edit-button");
 const nameEnter = document.querySelector(".popup__input_text_type-username");
 const aboutEnter = document.querySelector(".popup__input_text_type-about");
 const popupEditForm = document.querySelector(".popup-edit__form");
-const popupEditBtnSubmit = document.querySelector('.popup-edit__submit');
+const popupEditBtnSubmit = document.querySelector(".popup-edit__submit");
 
 // консты для профиля
 
@@ -18,11 +18,12 @@ const about = document.querySelector(".profile__subtitle");
 const popupAdd = document.querySelector(".popup-add");
 const popupAddClose = document.querySelector(".popup-add__btn-closed");
 const btnPopupAdd = document.querySelector(".profile__add-button");
-const formAddEl = document.querySelector(".popup-add__form");
+const popupAddForm = document.querySelector(".popup-add__form");
 const popupInputImgName = document.querySelector(
   ".popup__input_text_type-title"
 );
 const popupInputLink = document.querySelector(".popup__input_text_type-link");
+const popupAddBtnSubmit = document.querySelector(".popup-add__submit");
 
 // консты элементов
 
@@ -46,38 +47,38 @@ const validationConfig = {
   inactiveButtonClass: "popup__submit_inactive",
   inputErrorClass: "popup__input-error",
   errorClass: "popup__input-error_visible",
-  typeError: "popup__input_type_error"
+  typeError: "popup__input_type_error",
 };
 
 // функция закрытия попапа по клику на оверлей
 
 const closePopupByOverlayClick = (evt) => {
-  if (evt.target.classList.contains('popup')) {
-    closePopup(evt.currentTarget);    
+  if (evt.target.classList.contains("popup")) {
+    closePopup(evt.currentTarget);
   }
-}
+};
 
 // Закрытие попапа кликом на Escape
 
 function closePopupByEsc(evt) {
-  if (evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector(".popup_opened");
     closePopup(popupOpened);
-  };
+  }
 }
 
 // функция открытия попапов
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener('keydown', closePopupByEsc);
+  document.addEventListener("keydown", closePopupByEsc);
 }
 
 // функция закрытия попапов
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener('keydown', closePopupByEsc);
+  document.removeEventListener("keydown", closePopupByEsc);
 }
 
 // функция добавления новой карточки
@@ -85,11 +86,11 @@ function closePopup(popup) {
 function handleFormAddSubmit(evt) {
   evt.preventDefault();
 
-    const cardData = {
-      name: popupInputImgName.value,
-      link: popupInputLink.value,
-    };
-    cardsContainer.prepend(createCard(cardData));
+  const cardData = {
+    name: popupInputImgName.value,
+    link: popupInputLink.value,
+  };
+  cardsContainer.prepend(createCard(cardData));
   evt.target.reset();
   closePopup(popupAdd);
 }
@@ -101,7 +102,6 @@ function openBigImg(img, title) {
   popupImg.src = img;
   popupImgTitle.textContent = title;
   popupImg.alt = title;
-  popupBigImg.addEventListener('click', closePopupByOverlayClick);
 }
 
 // Смена имени профиля
@@ -156,17 +156,11 @@ initialCards.forEach((item) => {
   cardsContainer.append(createCard(item));
 });
 
-// слушатели отправки формы
-
-popupEditForm.addEventListener("submit", handleFormEditSubmit);
-formAddEl.addEventListener("submit", handleFormAddSubmit);
-
 buttonEditProfile.addEventListener("click", () => {
   openPopup(popupEdit);
   nameEnter.value = title.textContent;
   aboutEnter.value = about.textContent;
-  setEventListeners(popupEdit, validationConfig);
-  popupEdit.addEventListener('click', closePopupByOverlayClick);
+  resetValidation(popupEditForm, validationConfig);
 });
 
 popupEditClose.addEventListener("click", () => {
@@ -174,9 +168,8 @@ popupEditClose.addEventListener("click", () => {
 });
 
 btnPopupAdd.addEventListener("click", () => {
+  resetValidation(popupAddForm, validationConfig);
   openPopup(popupAdd);
-  setEventListeners(popupAdd, validationConfig);
-  popupAdd.addEventListener('click', closePopupByOverlayClick);
 });
 
 popupAddClose.addEventListener("click", () => {
@@ -188,5 +181,16 @@ popupAddClose.addEventListener("click", () => {
 popupBtnCloseBigImg.addEventListener("click", () => {
   closePopup(popupBigImg);
 });
+
+// слушатели отправки формы
+
+popupEditForm.addEventListener("submit", handleFormEditSubmit);
+popupAddForm.addEventListener("submit", handleFormAddSubmit);
+
+// слушатели закрытия по оверлею
+
+popupAdd.addEventListener("click", closePopupByOverlayClick);
+popupEdit.addEventListener("click", closePopupByOverlayClick);
+popupBigImg.addEventListener("click", closePopupByOverlayClick);
 
 enableValidation(validationConfig);
