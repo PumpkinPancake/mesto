@@ -1,11 +1,12 @@
 // консты для попапа редактирования имени пррофиля
 
 const popupEdit = document.querySelector(".popup-edit");
-const popupClose = document.querySelector(".popup__button-closed");
+const popupEditClose = document.querySelector(".popup-edit__btn-closed");
 const buttonEditProfile = document.querySelector(".profile__edit-button");
 const nameEnter = document.querySelector(".popup__input_text_type-username");
 const aboutEnter = document.querySelector(".popup__input_text_type-about");
 const popupEditForm = document.querySelector(".popup-edit__form");
+const popupEditBtnSubmit = document.querySelector('.popup-edit__submit');
 
 // консты для профиля
 
@@ -45,18 +46,38 @@ const validationConfig = {
   inactiveButtonClass: "popup__submit_inactive",
   inputErrorClass: "popup__input-error",
   errorClass: "popup__input-error_visible",
+  typeError: "popup__input_type_error"
 };
 
-// Открытие попапов
+// функция закрытия попапа по клику на оверлей
+
+const closePopupByOverlayClick = (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.currentTarget);    
+  }
+}
+
+// Закрытие попапа кликом на Escape
+
+function closePopupByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  };
+}
+
+// функция открытия попапов
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
-// закрытие попапов
+// функция закрытия попапов
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 // функция добавления новой карточки
@@ -64,13 +85,11 @@ function closePopup(popup) {
 function handleFormAddSubmit(evt) {
   evt.preventDefault();
 
-  if (popupInputLink.value !== "") {
     const cardData = {
       name: popupInputImgName.value,
       link: popupInputLink.value,
     };
     cardsContainer.prepend(createCard(cardData));
-  }
   evt.target.reset();
   closePopup(popupAdd);
 }
@@ -82,6 +101,7 @@ function openBigImg(img, title) {
   popupImg.src = img;
   popupImgTitle.textContent = title;
   popupImg.alt = title;
+  popupBigImg.addEventListener('click', closePopupByOverlayClick);
 }
 
 // Смена имени профиля
@@ -145,16 +165,18 @@ buttonEditProfile.addEventListener("click", () => {
   openPopup(popupEdit);
   nameEnter.value = title.textContent;
   aboutEnter.value = about.textContent;
-  enableValidation(validationConfig);
+  setEventListeners(popupEdit, validationConfig);
+  popupEdit.addEventListener('click', closePopupByOverlayClick);
 });
 
-popupClose.addEventListener("click", () => {
+popupEditClose.addEventListener("click", () => {
   closePopup(popupEdit);
 });
 
 btnPopupAdd.addEventListener("click", () => {
-  enableValidation(validationConfig);
   openPopup(popupAdd);
+  setEventListeners(popupAdd, validationConfig);
+  popupAdd.addEventListener('click', closePopupByOverlayClick);
 });
 
 popupAddClose.addEventListener("click", () => {
@@ -166,47 +188,5 @@ popupAddClose.addEventListener("click", () => {
 popupBtnCloseBigImg.addEventListener("click", () => {
   closePopup(popupBigImg);
 });
-
-// Закрытие попапов кликом на Escape
-
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closePopup(popupAdd);
-    closePopup(popupEdit);
-    closePopup(popupBigImg);
-  }
-});
-
-// Закрытия попапов по клику на оверлей
-
-popupEdit.addEventListener("click", function (evt) {
-  closePopup(popupEdit);
-});
-
-document
-  .querySelector(".popup-edit__container")
-  .addEventListener("click", function (evt) {
-    evt.stopPropagation();
-  });
-
-popupAdd.addEventListener("click", function (evt) {
-  closePopup(popupAdd);
-});
-
-document
-  .querySelector(".popup-add__container")
-  .addEventListener("click", function (evt) {
-    evt.stopPropagation();
-  });
-
-popupBigImg.addEventListener("click", function (evt) {
-  closePopup(popupBigImg);
-});
-
-document
-  .querySelector(".popup__big-img")
-  .addEventListener("click", function (evt) {
-    evt.stopPropagation();
-  });
 
 enableValidation(validationConfig);

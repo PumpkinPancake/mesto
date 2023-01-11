@@ -5,7 +5,7 @@ function hideInputError(formElement, inputElement, config) {
 
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = "";
-  inputElement.classList.remove(config.inputErrorClass);
+  inputElement.classList.remove(config.typeError);
 }
 
 // функция добавления класса ошибки
@@ -15,7 +15,7 @@ function showInputError(formElement, inputElement, config) {
 
   errorElement.classList.add(config.errorClass);
   errorElement.textContent = inputElement.validationMessage;
-  inputElement.classList.add(config.inputErrorClass);
+  inputElement.classList.add(config.typeError);
 }
 
 // функция проверки полей на валидацию
@@ -34,14 +34,18 @@ function hasInvalidInput(inputList) {
 
 // функция переключения кнопки сабмит disabled/enabled
 
-function toggleButtonState(inputList, buttonElement, config) {
+function disabledButtonState(inputList, buttonElement, config) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
-  } else {
+  };
+}
+
+function enabledButtonState(inputList, buttonElement, config) {
+  if (!hasInvalidInput(inputList)) {
     buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
-  }
+  };
 }
 
 // функция создания массивов из инпутов
@@ -53,12 +57,14 @@ function setEventListeners(formElement, config) {
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
   console.log(inputList);
 
-  toggleButtonState(inputList, buttonElement, config);
+  disabledButtonState(inputList, buttonElement, config);
+  enabledButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement, config);
-      toggleButtonState(inputList, buttonElement, config);
+      disabledButtonState(inputList, buttonElement, config);
+      enabledButtonState(inputList, buttonElement, config);
     });
   });
 }
@@ -66,7 +72,7 @@ function setEventListeners(formElement, config) {
 // финальная сборка))
 
 function enableValidation(config) {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  const formList = document.querySelectorAll(config.formSelector);
 
   formList.forEach((formElement) => {
     setEventListeners(formElement, config);
