@@ -23,3 +23,7 @@
     line-height: 16.94px;
   }
 }
+
+.popup__submit:disabled {
+  opacity: 100%;
+}
