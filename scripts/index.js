@@ -124,6 +124,8 @@ popupEditClose.addEventListener("click", () => {
 });
 
 btnPopupAdd.addEventListener("click", () => {
+  popupInputLink.value = '';
+  popupInputImgName.value = '';
   addFormValidation.resetValidation();
   openPopup(popupAdd);
 });
