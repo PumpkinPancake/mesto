@@ -26,4 +26,5 @@
 
 .popup__submit:disabled {
   opacity: 100%;
+  cursor: auto;
 }
