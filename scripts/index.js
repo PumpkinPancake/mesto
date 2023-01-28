@@ -61,11 +61,11 @@ buttonCloseList.forEach((btn) => {
   btn.addEventListener("click", () => closePopup(popup));
 });
 
-const FormEditValidation = new FormValidation(validationConfig, popupEditForm);
-FormEditValidation.enableValidation();
+const formEditValidation = new FormValidation(validationConfig, popupEditForm);
+formEditValidation.enableValidation();
 
-const FormAddValidation = new FormValidation(validationConfig, popupAddForm);
-FormAddValidation.enableValidation();
+const formAddValidation = new FormValidation(validationConfig, popupAddForm);
+formAddValidation.enableValidation();
 
 // Закрытие попапа кликом на Escape
 
@@ -90,6 +90,13 @@ function closePopup(popup) {
   document.removeEventListener("keydown", closePopupByEsc);
 }
 
+// функция сборки карточки
+
+const createCard = (data) => {
+  const card = new Card(data, "#element-template", handleOpenPopup);
+  return card.create();
+};
+
 // функция добавления новой карточки
 
 function handleFormAddSubmit(evt) {
@@ -100,7 +107,7 @@ function handleFormAddSubmit(evt) {
     link: popupInputLink.value,
   };
 
-  createCard(cardData);
+  cardsContainer.prepend(createCard(cardData));
 
   evt.target.reset();
   closePopup(popupAdd);
@@ -126,24 +133,20 @@ function handleFormEditSubmit(evt) {
   closePopup(popupEdit);
 }
 
-const createCard = (data) => {
-  const card = new Card(data, "#element-template", handleOpenPopup);
-  const element = card.create();
-  cardsContainer.prepend(element);
-};
-
-initialCards.forEach(createCard);
+initialCards.forEach((element) => {
+  cardsContainer.append(createCard(element));
+});
 
 buttonEditProfile.addEventListener("click", () => {
   openPopup(popupEdit);
   nameEnter.value = title.textContent;
   aboutEnter.value = about.textContent;
-  FormEditValidation.resetValidation();
+  formEditValidation.resetValidation();
 });
 
 btnPopupAdd.addEventListener("click", () => {
   popupAddForm.reset();
-  FormAddValidation.resetValidation();
+  formAddValidation.resetValidation();
   openPopup(popupAdd);
 });
 

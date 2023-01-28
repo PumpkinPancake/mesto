@@ -13,7 +13,6 @@ export class Card {
   _handleOpenPopup;
 
   constructor(data, templateSelector, handleOpenPopup) {
-    this._image = document.querySelector(".popup__img");
     this._templateSelector = templateSelector;
     this._handleOpenPopup = handleOpenPopup;
     this._link = data.link;
