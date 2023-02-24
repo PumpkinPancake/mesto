@@ -10,7 +10,6 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-
     this._inputValues = {};
 
     this._inputList.forEach(
@@ -20,10 +19,10 @@ export default class PopupWithForm extends Popup {
     return this._inputValues;
   }
 
-  setInputValues ({data}) {
-   this._inputList.forEach((input) => {
-    input.value = data[input.name];
-   });
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      input.value = data[input.name];
+    });
   }
 
   setEventListeners() {

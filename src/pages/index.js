@@ -15,6 +15,8 @@ const buttonEditProfile = document.querySelector(".profile__edit-button");
 const nameEnter = document.querySelector(".popup__input_text_type-username");
 const aboutEnter = document.querySelector(".popup__input_text_type-about");
 const popupEditForm = document.querySelector(".popup-edit__form");
+const title = document.querySelector(".profile__title");
+const about = document.querySelector(".profile__subtitle");
 
 // консты попапа добавления картинок
 
@@ -42,8 +44,8 @@ const createCard = (data) => {
 };
 
 function handleCardClick(title, link) {
-  popupOpenBigImg.open(title, link)
-};
+  popupOpenBigImg.open(title, link);
+}
 
 popupOpenBigImg.setEventListeners();
 
@@ -94,22 +96,22 @@ const formEdit = new PopupWithForm({
 });
 
 const userInfo = new UserInfo({
-  name: nameEnter.textContent,
-  info: aboutEnter.textContent,
+  name: title,
+  info: about,
 });
 
-function handleFormEditSubmit({ name, info }) {
-  userInfo.setUserInfo({ name, info });
+function handleFormEditSubmit() {
+  userInfo.setUserInfo({
+    name: nameEnter.value,
+    info: aboutEnter.value,
+  });
   formEdit.close();
 }
 
-const ff = userInfo.setUserInfo();
-console.log(ff)
-
 buttonEditProfile.addEventListener("click", () => {
-  userInfo.setUserInfo({ name: nameEnter.textContent, info: aboutEnter.textContent });
   const { name, info } = userInfo.getUserInfo();
-  formEdit.setInputValues({ name, info });
+  nameEnter.value = name;
+  aboutEnter.value = info;
   formEdit.open();
   formEditValidation.resetValidation();
 });

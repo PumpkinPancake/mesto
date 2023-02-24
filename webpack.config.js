@@ -44,7 +44,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
   devServer: {
-    port: 5353,
+    port: 8080,
     open: true,
     hot: true,
     watchFiles: ["*/**/*.html"],
