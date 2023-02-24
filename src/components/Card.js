@@ -1,4 +1,3 @@
-
 export class Card {
   _data;
   _template;
@@ -62,8 +61,8 @@ export class Card {
       this._delete();
     });
 
-    this._cardImg.addEventListener('click', () => { 
-      this._handleOpenPopup(this._title, this._link) 
-    }); 
+    this._cardImg.addEventListener("click", () => {
+      this._handleOpenPopup(this._title, this._link);
+    });
   }
 }

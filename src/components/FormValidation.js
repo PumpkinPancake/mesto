@@ -1,11 +1,14 @@
-
 export class FormValidation {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
 
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-    this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
+    this._inputList = Array.from(
+      this._formElement.querySelectorAll(this._config.inputSelector)
+    );
+    this._buttonElement = this._formElement.querySelector(
+      this._config.submitButtonSelector
+    );
   }
 
   _hideInputError(inputElement) {
@@ -60,9 +63,9 @@ export class FormValidation {
 
   _setEventListeners() {
     this._toggleButtonState();
-    
+
     this._inputList.forEach((inputElement) => {
-      inputElement.addEventListener('input', () => {
+      inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
         this._toggleButtonState();
       });
@@ -70,7 +73,6 @@ export class FormValidation {
   }
 
   resetValidation() {
-    
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
