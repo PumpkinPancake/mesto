@@ -1,7 +1,7 @@
 export class UserInfo {
-  constructor({ name, info }) {
+  constructor({ name, about }) {
     this._name = name;
-    this._info = info;
+    this._info = about;
   }
 
   getUserInfo() {
@@ -11,8 +11,8 @@ export class UserInfo {
     };
   }
 
-  setUserInfo({ name, info }) {
+  setUserInfo({ name, about }) {
     this._name.textContent = name;
-    this._info.textContent = info;
+    this._info.textContent = about;
   }
 }

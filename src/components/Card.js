@@ -20,7 +20,7 @@ export class Card {
     this._getTemplate();
   }
 
-  _like() {
+  _toggleLike() {
     this._btnLike.classList.toggle("element__button-like_active");
   }
 
@@ -54,7 +54,7 @@ export class Card {
 
   setEventListeners() {
     this._btnLike.addEventListener("click", () => {
-      this._like();
+      this._toggleLike();
     });
 
     this._btnDelete.addEventListener("click", () => {
