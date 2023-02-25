@@ -7,7 +7,6 @@ import { validationConfig } from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import { data } from "autoprefixer";
 
 const popupEdit = document.querySelector(".popup-edit");
 const buttonEditProfile = document.querySelector(".profile__edit-button");
@@ -19,10 +18,7 @@ const popupAdd = document.querySelector(".popup-add");
 const btnPopupAdd = document.querySelector(".profile__add-button");
 const popupAddForm = document.querySelector(".popup-add__form");
 const popupEditForm = document.querySelector(".popup-edit__form");
-const popupInputImgName = document.querySelector(
-  ".popup__input_text_type-title"
-);
-const popupInputLink = document.querySelector(".popup__input_text_type-link");
+
 const cardsContainer = document.querySelector(".elements");
 const popupBigImg = document.querySelector(".popup_open_big-img");
 
