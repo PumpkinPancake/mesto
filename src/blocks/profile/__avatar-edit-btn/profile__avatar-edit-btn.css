@@ -1,4 +1,4 @@
-.profile__avatar_edit-btn {
+.profile__avatar-edit-btn {
   padding: 0;
   border: 0;
   background: none;
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.profile__avatar_edit-btn::before {
+.profile__avatar-edit-btn::before {
   position: absolute;
   content: " ";
   left: 0;
@@ -26,6 +26,6 @@
   transition: opacity 0.2s linear;
 }
 
-.profile__avatar_edit-btn:hover::before {
+.profile__avatar-edit-btn:hover::before {
   opacity: 0.8;
 }
