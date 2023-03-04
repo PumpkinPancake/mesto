@@ -1,4 +1,4 @@
-.profile__edit-btn_avatar {
+.profile__avatar_edit-btn {
   padding: 0;
   border: 0;
   background: none;
@@ -9,13 +9,13 @@
   overflow: hidden;
 }
 
-.profile__edit-btn_avatar::before {
+.profile__avatar_edit-btn::before {
   position: absolute;
   content: " ";
   left: 0;
   top: 0;
   background: black;
-  background-image: url('../../../images/edit-avatar.svg');
+  background-image: url("../../../images/edit-avatar.svg");
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
@@ -26,6 +26,6 @@
   transition: opacity 0.2s linear;
 }
 
-.profile__edit-btn_avatar:hover::before {
+.profile__avatar_edit-btn:hover::before {
   opacity: 0.8;
 }

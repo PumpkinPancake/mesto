@@ -24,7 +24,7 @@ const popupEditForm = document.querySelector(".popup-edit__form");
 const popupEditAvatar = document.querySelector(".popup-avatar");
 const popupEditAvatarForm = document.querySelector(".popup-edit-avatar__form");
 const popupOpenWarning = document.querySelector(".popup-warning");
-const btnEditAvatar = document.querySelector(".profile__edit-btn_avatar");
+const btnEditAvatar = document.querySelector(".profile__avatar_edit-btn");
 
 const cardsContainer = document.querySelector(".elements");
 const popupBigImg = document.querySelector(".popup_open_big-img");
