@@ -32,6 +32,8 @@ let userId;
 
 const api = new Api(config);
 
+console.log(popupAddForm);
+
 const popupOpenBigImg = new PopupWithImage(popupBigImg);
 const userInfo = new UserInfo({
   name: title,
@@ -189,6 +191,7 @@ btnPopupAdd.addEventListener("click", () => {
 });
 
 btnEditAvatar.addEventListener("click", () => {
+  formAvatarValidation.resetValidation();
   popupWithAvatar.open();
 });
 
@@ -198,6 +201,7 @@ buttonEditProfile.addEventListener("click", () => {
   const { name, info } = userInfo.getUserInfo();
   nameEnter.value = name;
   aboutEnter.value = info;
+  formEditValidation.resetValidation();
   formEdit.open();
 });
 
@@ -207,8 +211,7 @@ formEditValidation.enableValidation();
 const formAddValidation = new FormValidation(validationConfig, popupAddForm);
 formAddValidation.enableValidation();
 
-const formAvatarValidation = new FormValidation(
-  validationConfig,
-  popupEditForm
-);
+const formAvatarValidation = new FormValidation(validationConfig, popupEditAvatarForm);
+
 formAvatarValidation.enableValidation();
+

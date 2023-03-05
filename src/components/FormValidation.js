@@ -1,6 +1,6 @@
 export class FormValidation {
-  constructor(validationConfig, formElement) {
-    this._config = validationConfig;
+  constructor(config, formElement) {
+    this._config = config;
     this._formElement = formElement;
 
     this._inputList = Array.from(
@@ -17,8 +17,8 @@ export class FormValidation {
     );
 
     errorElement.classList.remove(this._config.errorClass);
+    inputElement.classList.remove(this._config.inputErrorClass);
     errorElement.textContent = "";
-    inputElement.classList.remove(this._config.typeError);
   }
 
   _showInputError(inputElement, errorMessage) {
@@ -28,7 +28,7 @@ export class FormValidation {
 
     errorElement.classList.add(this._config.errorClass);
     errorElement.textContent = errorMessage;
-    inputElement.classList.add(this._config.typeError);
+    inputElement.classList.add(this._config.inputErrorClass);
   }
 
   _checkInputValidity(inputElement) {
@@ -54,7 +54,8 @@ export class FormValidation {
   }
 
   _toggleButtonState() {
-    if (this._hasInvalidInput()) {
+    const hasInvalidInput = this._inputList.findIndex(inputElement => !inputElement.validity.valid) !== -1;
+    if (hasInvalidInput) {
       this._disableButton();
     } else {
       this._enableButton();
@@ -80,9 +81,10 @@ export class FormValidation {
   }
 
   enableValidation() {
-    this._formElement.addEventListener('submit', (e) => {
+    this._formElement.addEventListener("submit", (e) => {
       e.preventDefault();
-    })
+    });
     this._setEventListeners();
   }
 }
+
