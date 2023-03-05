@@ -41,7 +41,6 @@ export class Card {
   delete() {
     this._element.remove();
     this._element = null;
-    console.log('Карточка удалена успешно');
   }
 
   _getTemplate() {
@@ -78,7 +77,7 @@ export class Card {
     });
   
     this._btnDelete.addEventListener("click", () => {
-      this._handleCardRemove(this, this._cardId);
+      this._handleCardRemove(this);
     });
   
     this._cardImg.addEventListener("click", () => {

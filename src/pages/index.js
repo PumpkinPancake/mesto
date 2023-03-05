@@ -94,15 +94,15 @@ const popupWarning = new PopupWithWarning(
   checkBeforeDeletion
 );
 
-function handleCardRemove(cardId, card) {
-  popupWarning.open(cardId, card);
+function handleCardRemove(card, cardId) {
+  popupWarning.open(card, cardId);
 }
 
-function checkBeforeDeletion(cardId, card) {
+function checkBeforeDeletion(card) {
   api
-    .deleteCard(cardId)
-    .then((res) => {
-      card.delete(res);
+    .deleteCard(card._cardId)
+    .then(() => {
+      card.delete();
     })
     .catch((err) => {
       console.log(err);
