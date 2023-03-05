@@ -101,7 +101,7 @@ function handleCardRemove(card, cardId) {
 }
 
 function checkBeforeDeletion(card) {
-  popupWarning.setButtonText('Удаление...')
+  popupWarning.setButtonText("Удаление...");
   api
     .deleteCard(card._cardId)
     .then(() => {
@@ -111,7 +111,7 @@ function checkBeforeDeletion(card) {
       console.log(err);
     })
     .finally(() => {
-      popupWarning.setButtonText('Да')
+      popupWarning.setButtonText("Да");
     });
 }
 
@@ -131,7 +131,7 @@ const formAddCard = new PopupWithForm({
 formAddCard.setEventListeners();
 
 function handleFormAddSubmit(cardElement) {
-  formAddCard.setButtonText("Сохранение...")
+  formAddCard.setButtonText("Сохранение...");
   api
     .getPlaceCard(cardElement)
     .then((res) => {
@@ -141,7 +141,7 @@ function handleFormAddSubmit(cardElement) {
       console.log(err);
     })
     .finally(() => {
-      formAddCard.setButtonText('Создать')
+      formAddCard.setButtonText("Создать");
     });
 }
 
@@ -151,7 +151,7 @@ const formEdit = new PopupWithForm({
 });
 
 function handleFormEditSubmit(data) {
-  formEdit.setButtonText('Сохранение...')
+  formEdit.setButtonText("Сохранение...");
   api
     .setUserInfo(data)
     .then((res) => {
@@ -162,7 +162,7 @@ function handleFormEditSubmit(data) {
       console.log(err);
     })
     .finally(() => {
-      formEdit.setButtonText("Сохранить")
+      formEdit.setButtonText("Сохранить");
     });
 }
 
@@ -172,6 +172,8 @@ const popupWithAvatar = new PopupWithForm({
   popupSelector: popupEditAvatar,
   formSubmit: handleFormEditAvatarSubmit,
 });
+
+popupWithAvatar.setEventListeners();
 
 function handleFormEditAvatarSubmit(newLink) {
   api
@@ -195,8 +197,6 @@ btnEditAvatar.addEventListener("click", () => {
   popupWithAvatar.open();
 });
 
-popupWithAvatar.setEventListeners();
-
 buttonEditProfile.addEventListener("click", () => {
   const { name, info } = userInfo.getUserInfo();
   nameEnter.value = name;
@@ -211,7 +211,9 @@ formEditValidation.enableValidation();
 const formAddValidation = new FormValidation(validationConfig, popupAddForm);
 formAddValidation.enableValidation();
 
-const formAvatarValidation = new FormValidation(validationConfig, popupEditAvatarForm);
+const formAvatarValidation = new FormValidation(
+  validationConfig,
+  popupEditAvatarForm
+);
 
 formAvatarValidation.enableValidation();
-

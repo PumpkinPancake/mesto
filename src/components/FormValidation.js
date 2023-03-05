@@ -54,8 +54,7 @@ export class FormValidation {
   }
 
   _toggleButtonState() {
-    const hasInvalidInput = this._inputList.findIndex(inputElement => !inputElement.validity.valid) !== -1;
-    if (hasInvalidInput) {
+    if (this._hasInvalidInput()) {
       this._disableButton();
     } else {
       this._enableButton();
