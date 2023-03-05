@@ -14,6 +14,10 @@ export class PopupWithWarning extends Popup {
     this._card = card;
   }
 
+  setButtonText(text) {
+    this._btnSubmit.textContent = text
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {

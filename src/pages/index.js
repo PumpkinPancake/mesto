@@ -22,7 +22,7 @@ const btnPopupAdd = document.querySelector(".profile__add-button");
 const popupAddForm = document.querySelector(".popup-add__form");
 const popupEditForm = document.querySelector(".popup-edit__form");
 const popupEditAvatar = document.querySelector(".popup-avatar");
-const popupEditAvatarForm = document.querySelector(".popup-edit-avatar__form");
+const popupEditAvatarForm = document.querySelector(".popup-avatar__form");
 const popupOpenWarning = document.querySelector(".popup-warning");
 const btnEditAvatar = document.querySelector(".profile__avatar-edit-btn");
 
@@ -99,6 +99,7 @@ function handleCardRemove(card, cardId) {
 }
 
 function checkBeforeDeletion(card) {
+  popupWarning.setButtonText('Удаление...')
   api
     .deleteCard(card._cardId)
     .then(() => {
@@ -106,6 +107,9 @@ function checkBeforeDeletion(card) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      popupWarning.setButtonText('Да')
     });
 }
 
@@ -125,6 +129,7 @@ const formAddCard = new PopupWithForm({
 formAddCard.setEventListeners();
 
 function handleFormAddSubmit(cardElement) {
+  formAddCard.setButtonText("Сохранение...")
   api
     .getPlaceCard(cardElement)
     .then((res) => {
@@ -132,6 +137,9 @@ function handleFormAddSubmit(cardElement) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      formAddCard.setButtonText('Создать')
     });
 }
 
@@ -141,6 +149,7 @@ const formEdit = new PopupWithForm({
 });
 
 function handleFormEditSubmit(data) {
+  formEdit.setButtonText('Сохранение...')
   api
     .setUserInfo(data)
     .then((res) => {
@@ -149,6 +158,9 @@ function handleFormEditSubmit(data) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      formEdit.setButtonText("Сохранить")
     });
 }
 
@@ -177,7 +189,6 @@ btnPopupAdd.addEventListener("click", () => {
 });
 
 btnEditAvatar.addEventListener("click", () => {
-  formAvatarValidation.resetValidation();
   popupWithAvatar.open();
 });
 
