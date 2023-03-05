@@ -20,7 +20,7 @@ export default class PopupWithForm extends Popup {
     return this._inputValues;
   }
 
-  setButtonText(text) {
+  showWaitingText(text) {
     this._btnSubmit.textContent = text
   }
 

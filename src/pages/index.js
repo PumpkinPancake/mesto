@@ -101,7 +101,7 @@ function handleCardRemove(card, cardId) {
 }
 
 function checkBeforeDeletion(card) {
-  popupWarning.setButtonText("Удаление...");
+  popupWarning.showWaitingText("Удаление...");
   api
     .deleteCard(card._cardId)
     .then(() => {
@@ -111,7 +111,7 @@ function checkBeforeDeletion(card) {
       console.log(err);
     })
     .finally(() => {
-      popupWarning.setButtonText("Да");
+      popupWarning.showWaitingText("Да");
     });
 }
 
@@ -131,7 +131,7 @@ const formAddCard = new PopupWithForm({
 formAddCard.setEventListeners();
 
 function handleFormAddSubmit(cardElement) {
-  formAddCard.setButtonText("Сохранение...");
+  formAddCard.showWaitingText("Сохранение...");
   api
     .getPlaceCard(cardElement)
     .then((res) => {
@@ -141,7 +141,7 @@ function handleFormAddSubmit(cardElement) {
       console.log(err);
     })
     .finally(() => {
-      formAddCard.setButtonText("Создать");
+      formAddCard.showWaitingText("Создать");
     });
 }
 
@@ -151,7 +151,7 @@ const formEdit = new PopupWithForm({
 });
 
 function handleFormEditSubmit(data) {
-  formEdit.setButtonText("Сохранение...");
+  formEdit.showWaitingText("Сохранение...");
   api
     .setUserInfo(data)
     .then((res) => {
@@ -162,7 +162,7 @@ function handleFormEditSubmit(data) {
       console.log(err);
     })
     .finally(() => {
-      formEdit.setButtonText("Сохранить");
+      formEdit.showWaitingText("Сохранить");
     });
 }
 
@@ -176,6 +176,7 @@ const popupWithAvatar = new PopupWithForm({
 popupWithAvatar.setEventListeners();
 
 function handleFormEditAvatarSubmit(newLink) {
+  popupWithAvatar.showWaitingText('Сохранение...')
   api
     .installAvatar(newLink.avatar)
     .then((res) => {
@@ -184,6 +185,9 @@ function handleFormEditAvatarSubmit(newLink) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      popupWithAvatar.showWaitingText('Сохранить')
     });
 }
 

@@ -14,7 +14,7 @@ export class PopupWithWarning extends Popup {
     this._card = card;
   }
 
-  setButtonText(text) {
+  showWaitingText(text) {
     this._btnSubmit.textContent = text
   }
 
