@@ -1,6 +1,6 @@
 export class FormValidation {
-  constructor(config, formElement) {
-    this._config = config;
+  constructor(validationConfig, formElement) {
+    this._config = validationConfig;
     this._formElement = formElement;
 
     this._inputList = Array.from(
@@ -74,12 +74,15 @@ export class FormValidation {
 
   resetValidation() {
     this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement);
+      this._checkInputValidity(inputElement);
     });
     this._toggleButtonState();
   }
 
   enableValidation() {
+    this._formElement.addEventListener('submit', (e) => {
+      e.preventDefault();
+    })
     this._setEventListeners();
   }
 }

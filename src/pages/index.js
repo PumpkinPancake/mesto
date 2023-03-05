@@ -198,7 +198,6 @@ buttonEditProfile.addEventListener("click", () => {
   const { name, info } = userInfo.getUserInfo();
   nameEnter.value = name;
   aboutEnter.value = info;
-  formEditValidation.resetValidation();
   formEdit.open();
 });
 
