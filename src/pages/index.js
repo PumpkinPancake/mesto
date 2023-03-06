@@ -8,7 +8,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Api from "../components/Api.js";
-import { PopupWithWarning } from "../components/popupWithWarning.js";
+import { PopupWithWarning } from "../components/PopupWithWarning.js";
 
 const popupEdit = document.querySelector(".popup-edit");
 const buttonEditProfile = document.querySelector(".profile__edit-button");
@@ -106,6 +106,7 @@ function checkBeforeDeletion(card) {
     .deleteCard(card._cardId)
     .then(() => {
       card.delete();
+      popupWarning.close();
     })
     .catch((err) => {
       console.log(err);
@@ -136,6 +137,7 @@ function handleFormAddSubmit(cardElement) {
     .getPlaceCard(cardElement)
     .then((res) => {
       cardsList.addNewItem(createCard(res));
+      formAddCard.close();
     })
     .catch((err) => {
       console.log(err);

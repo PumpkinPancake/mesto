@@ -23,7 +23,6 @@ export class PopupWithWarning extends Popup {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._confirmFormSubmit(this._cardId, this._card);
-      super.close();
     });
   }
 }
